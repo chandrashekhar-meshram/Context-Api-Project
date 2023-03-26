@@ -1,25 +1,23 @@
-import React from "react";
-import "./style.css";
-import {BroserRouter as Router, Routes, Route} from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Cart from './components/Cart';
 
 import Header from './components/Header';
+import Home from './components/Home';
+import Cart from './components/Cart';
 
-const App = ()=> {
+const App = () => { 
 
   return (
-    <Router>
-    <div>
-     
-      <h1>App.js</h1>
-      <Header />   
-      <Routes>
-        <Route path='/' element={  }  />
-      </Routes>
+    <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+          <Route path="/cart" element={ <Cart /> } />
+        </Routes>
+      </BrowserRouter>
 
-    
-    </div>
-    </Router>
   );
-}
+};
 
 export default App;
