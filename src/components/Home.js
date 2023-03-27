@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import faker from 'faker';
 import './style.css';
+import SingleProduct from './SingleProduct';
 
 const Home = () => {
   const productArray = [...Array(20)].map(() => ({
@@ -9,8 +10,17 @@ const Home = () => {
   }));
 
   console.log("productArray - ", productArray);
+  const[products] = useState(productArray);
 
-  return <div>Home</div>;
+  return (
+    <div className='productContainer'>
+      {
+        products.map((prod) => (
+          <SingleProduct  prod={prod} />
+        ))
+      }     
+    </div>
+  );
 };
 
 export default Home;
