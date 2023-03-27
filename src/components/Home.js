@@ -1,11 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import faker from 'faker';
 import './style.css';
+import {Cart} from '../Context';
 import SingleProduct from './SingleProduct';
 
 faker.seed(100);
 
-const Home = ({cart, setCart}) => {
+const Home = () => {
+ const {cart, setCart} = useContext(Cart);
+ //console.log(useContext(Cart));
+
   const productArray = [...Array(20)].map(() => ({
     id: faker.datatype.uuid(),
     name: faker.commerce.productName(),
@@ -16,13 +20,13 @@ const Home = ({cart, setCart}) => {
   //console.log("productArray - ", productArray);
   // const [cart, setCart] = useState([]);
   const[products] = useState(productArray);
-  console.log("cart - ", cart);
+  //console.log("cart - ", cart);
 
   return (
     <div className='productContainer'>
       {
         products.map((prod) => (
-          <SingleProduct  prod={prod} key={prod.id} cart={cart} setCart={setCart} />
+          <SingleProduct  prod={prod} key={prod.id} />
         ))
       }     
     </div>
